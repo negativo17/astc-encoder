@@ -1,0 +1,26 @@
+diff -Naur orig/CMakeLists.txt astc-encoder-5.7.0/CMakeLists.txt
+--- a/CMakeLists.txt	2026-07-31 12:28:03.000000000 +0200
++++ b/CMakeLists.txt	2026-09-21 08:44:26.007507184 +0200
+@@ -27,6 +27,8 @@
+ 
+ project(astcencoder VERSION 5.7.0)
+ 
++include(GNUInstallDirs)
++
+ set(CMAKE_CXX_STANDARD 14)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+diff -Naur orig/Source/cmake_core.cmake astc-encoder-5.7.0/Source/cmake_core.cmake
+--- a/Source/cmake_core.cmake	2026-07-31 12:28:03.000000000 +0200
++++ b/Source/cmake_core.cmake	2026-09-21 08:44:26.007574330 +0200
+@@ -504,6 +504,10 @@
+             $<${is_gnu_fe}:-fvisibility=hidden>
+             $<${is_msvc_fe}:/W4>)
+ 
++    set_target_properties(${ASTCENC_TARGET}-shared PROPERTIES
++        VERSION ${CMAKE_PROJECT_VERSION}
++        SOVERSION ${CMAKE_PROJECT_VERSION_MAJOR})
++
+     if(NOT ${ASTCENC_UNIVERSAL_BUILD})
+         install(TARGETS ${ASTCENC_TARGET}-shared)
+     endif()
