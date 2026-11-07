@@ -21,7 +21,7 @@
 %endif
 
 Name:           astc-encoder
-Version:        5.7.0
+Version:        5.7.1
 Release:        1%{?dist}
 Summary:        Adaptive Scalable Texture Compression encoder
 License:        Apache-2.0
@@ -91,5 +91,8 @@ install -p -m 0644 -D Source/astcenc.h %{buildroot}%{_includedir}/astcenc.h
 %{expand:%(for v in %{variants}; do echo "%{_libdir}/libastcenc-$v-shared.so"; done)}
 
 %changelog
+* Thu Nov 05 2026 Simone Caronni <negativo17@gmail.com> - 5.7.1-1
+- Update to 5.7.1.
+
 * Mon Sep 21 2026 Simone Caronni <negativo17@gmail.com> - 5.7.0-1
 - First build.
